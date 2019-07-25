@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.neu.dao.ApplicationDao">
+
+    <insert id="addApplication">
+        insert into Application(application_uid, application_name, application_customer, application_customerLogo,application_createtime, application_description)
+                    values (#{application_uid},#{application_name},#{application_customer},#{application_customerLogo},#{application_createtime},#{application_description})
+    </insert>
+
+    <delete id="deleteApplicationByUid">
+        delete from Application where application_uid=#{uid}
+    </delete>
+
+    <update id="updateApplicationByUid">
+        update Application set application_uid=#{application_uid},application_name=#{application_name},application_customer=#{application_customer},
+                                application_customerLogo=#{application_customerLogo},application_createtime=#{application_createtime},application_description=#{application_description}
+        where application_uid=#{application_uid}
+    </update>
+
+    <select id="findAllApplicationPaged" resultType="cn.neu.domain.Application">
+        SELECT * FROM application limit #{before}, #{after}
+    </select>
+
+    <select id="findApplicationPaged" resultType="cn.neu.domain.Application">
+         SELECT * FROM application limit #{before}, #{after}
+    </select>
+
+</mapper>
+
+
+

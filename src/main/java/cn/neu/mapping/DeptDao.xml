@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.neu.dao.DeptDao">
+
+    <select id="findAllDept" resultType="cn.neu.domain.Dept">
+        select * from dept
+     </select>
+    <select id="findAllDeptPage" parameterType="int" resultType="cn.neu.domain.Dept">
+        select * from (select row_number() over(order by ID) idx,e.* from dept e) s where ID between #{before} and #{after}
+    </select>
+
+    <select id="countAllDept" resultType="int">
+        select count(*) from dept
+    </select>
+
+    <delete id="deleteDept" parameterType="int">
+        delete from dept where id=#{id}
+    </delete>
+
+    <update id="updateDeptById" >
+        update dept set id=#{id},dept_code=#{dept_code}, dept_name=#{dept_name}, dept_catagory=#{dept_catagory}, dept_type=#{dept_type}
+        where id = #{oid}
+    </update>
+
+    <select id="countAllDeptBy" resultType="int">
+        select count(*) from dept where ${dom} like '%' #{value} '%'
+    </select>
+
+    <select id="findAllDeptPageBy" resultType="cn.neu.domain.Dept">
+        select * from (select row_number() over(order by ID) idx,e.* from dept e) s where ID between #{before} and #{after} and ${dom} like '%' #{value} '%'
+    </select>
+
+</mapper>
