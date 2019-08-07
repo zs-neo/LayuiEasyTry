@@ -34,25 +34,19 @@
         </div>
 
         <div class="layui-side layui-bg-black">
-            <div class="layui-side-scroll">
-                <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-                <ul class="layui-nav layui-nav-tree"  lay-filter="test">
-                    <li class="layui-nav-item layui-nav-itemed">
-                        <a class="" href="javascript:;">应用信息</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="/control/toDept">应用</a></dd>
-                            <dd><a href="javascript:;">应用角色</a></dd>
-                        </dl>
-                    </li>
-                    <li class="layui-nav-item layui-nav-itemed">
-                        <a class="" href="javascript:;">数据对象信息</a>
-                        <dl class="layui-nav-child">
-                            <dd><a href="/control/toDept">数据对象属性</a></dd>
-                            <dd><a href="javascript:;">数据对象操作</a></dd>
-                        </dl>
-                    </li>
-                </ul>
-            </div>
+          <div class="layui-side-scroll">
+            <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
+            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+              <li class="layui-nav-item layui-nav-itemed">
+                <a class="" href="javascript:;">医院基本信息</a>
+                <dl class="layui-nav-child">
+                  <dd class="layui-this"><a href="/control/toDept">科室信息</a></dd>
+                  <dd><a href="javascript:;">疾病信息</a></dd>
+                  <dd><a href="javascript:;">药品信息</a></dd>
+                </dl>
+              </li>
+            </ul>
+          </div>
         </div>
 
         <div class="layui-body">

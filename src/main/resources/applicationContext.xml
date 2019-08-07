@@ -57,9 +57,4 @@
         </tx:attributes>
     </tx:advice>
 
-    <!--配置AOP增强-->
-    <aop:config>
-        <aop:advisor advice-ref="txAdvice" pointcut="execution(* cn.neu.service.impl.*ServiceImpl.*(..))"/>
-    </aop:config>
-
 </beans>
