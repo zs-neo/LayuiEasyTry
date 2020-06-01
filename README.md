@@ -1,2 +1,4 @@
-# practiceObject
-练手的一些项目
+# Layui+SSM简单增删改查
+
+项目使用了layui框架，后端使用ssm架构实现了增删改查，很简单的小项目。
+
