@@ -17,7 +17,7 @@
         delete from dept where id=#{id}
     </delete>
 
-    <update id="updateDeptById" >
+    <update id="updateDeptById">
         update dept set id=#{id},dept_code=#{dept_code}, dept_name=#{dept_name}, dept_catagory=#{dept_catagory}, dept_type=#{dept_type}
         where id = #{oid}
     </update>

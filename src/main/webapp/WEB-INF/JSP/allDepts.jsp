@@ -27,7 +27,7 @@
             </li>
             <li class="layui-nav-item">
                 <a href="javascript:;">
-                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img" >
+                    <img src="http://t.cn/RCzsdCq" class="layui-nav-img">
                     Admin
                 </a>
             </li>
@@ -38,7 +38,7 @@
     <div class="layui-side layui-bg-black">
         <div class="layui-side-scroll">
             <!-- 左侧导航区域（可配合layui已有的垂直导航） -->
-            <ul class="layui-nav layui-nav-tree"  lay-filter="test">
+            <ul class="layui-nav layui-nav-tree" lay-filter="test">
                 <li class="layui-nav-item layui-nav-itemed">
                     <a class="" href="javascript:;">医院基本信息</a>
                     <dl class="layui-nav-child">
@@ -81,7 +81,8 @@
                                     <div class="layui-form-item">
                                         <label class="layui-form-label"></label>
                                         <div class="layui-input-block">
-                                            <input id="demoReload" type="text" name="title" lay-verify="title" autocomplete="off" placeholder="要查找的内容" class="layui-input">
+                                            <input id="demoReload" type="text" name="title" lay-verify="title"
+                                                   autocomplete="off" placeholder="要查找的内容" class="layui-input">
                                         </div>
                                     </div>
                                 </div>
@@ -113,102 +114,103 @@
 </div>
 <script src="../layui/layui.js"></script>
 <script>
-    layui.use('table', function(){
+    layui.use('table', function () {
         var table = layui.table;
         table.render({
             elem: '#test'
-            ,url:'/dept/findAllDeptPage'
-            ,cols: [[
+            , url: '/dept/findAllDeptPage'
+            , cols: [[
                 {checkbox: true, fixed: true}
-                ,{field:'id', width:80, title: 'ID编码', sort: true}
-                ,{field:'dept_code', width:120, title: '科室编码'}
-                ,{field:'dept_name', width:120, title: '科室名称', sort: true}
-                ,{field:'dept_catagory', width:120, title: '科室类别'}
-                ,{field:'dept_type', width:120, title: '科室类型', sort: true}
-                ,{field:'right', title: '操作',toolbar:"#barDemo"}
+                , {field: 'id', width: 80, title: 'ID编码', sort: true}
+                , {field: 'dept_code', width: 120, title: '科室编码'}
+                , {field: 'dept_name', width: 120, title: '科室名称', sort: true}
+                , {field: 'dept_catagory', width: 120, title: '科室类别'}
+                , {field: 'dept_type', width: 120, title: '科室类型', sort: true}
+                , {field: 'right', title: '操作', toolbar: "#barDemo"}
             ]]
-            ,page: true
-            ,height:298
-            ,id:'testTable'
+            , page: true
+            , height: 298
+            , id: 'testTable'
         });
     });
 </script>
 <script>
     //JavaScript代码区域
-    layui.use('element', function(){
+    layui.use('element', function () {
         var element = layui.element;
     });
     //监听工具条
-    layui.use('table', function(){
+    layui.use('table', function () {
         var table = layui.table;
         //监听表格复选框选择
-        table.on('checkbox(demo)', function(obj){
+        table.on('checkbox(demo)', function (obj) {
             console.log(obj)
         });
         //监听工具条
-        table.on('tool(demo)', function(obj){
+        table.on('tool(demo)', function (obj) {
             var data = obj.data;
-            if(obj.event === 'detail'){
-                layer.alert("查看ID : "+data.id+" 的行");
-            } else if(obj.event === 'del'){
-                layer.confirm('真的删除行么', function(index){
+            if (obj.event === 'detail') {
+                layer.alert("查看ID : " + data.id + " 的行");
+            } else if (obj.event === 'del') {
+                layer.confirm('真的删除行么', function (index) {
                     $.ajax({
                         url: "/dept/deleteDept",
                         type: "POST",
-                        data:{"id":data.id},
+                        data: {"id": data.id},
                         dataType: "json",
-                        success: function(data){
-                            var json=JSON.parse(data);
-                            if(json.result=="1"){
+                        success: function (data) {
+                            var json = JSON.parse(data);
+                            if (json.result == "1") {
                                 obj.del();
                                 //关闭弹框
                                 layer.close(index);
                                 layer.msg("删除成功", {icon: 6});
                                 $(".layui-laypage-btn").click()
-                            }else{
+                            } else {
                                 layer.msg("删除失败", {icon: 5});
                             }
                         }
                     });
                 });
-            } else if(obj.event === 'edit'){
+            } else if (obj.event === 'edit') {
                 //layer.alert('编辑行：<br>'+ JSON.stringify(data));
                 layer.open({
                     type: 2,
                     closeBtn: 2,
-                    title:'修改科室信息',
+                    title: '修改科室信息',
                     area: ['400px', '420px'],
                     shade: 0.8,
                     id: (new Date()).valueOf(), //设定一个id，防止重复弹出 时间戳1280977330748
                     btnAlign: 'r',
                     moveType: 1, //拖拽模式，0或者1
-                    content: '/control/toDeptEdit?id=' + data.id+"&dept_code="+ data.dept_code
-                        +"&dept_name="+ encodeURI(encodeURI(data.dept_name))+ "&dept_catagory=" + data.dept_catagory + "&dept_type=" + data.dept_type
+                    content: '/control/toDeptEdit?id=' + data.id + "&dept_code=" + data.dept_code
+                        + "&dept_name=" + encodeURI(encodeURI(data.dept_name)) + "&dept_catagory=" + data.dept_catagory + "&dept_type=" + data.dept_type
                 });
             }
         });
-        var $ = layui.$, active = {
-                reload: function () {
-                    var demoReload = $('#demoReload').val();//获取输入框的值
-                    var  selects = $('#selects').val();//获取输入框的值
-                    //alert(demoReload+selects);
-                    //执行重载
-                    table.reload('testTable', {
-                        page: {
-                            curr: 1 //重新从第 1 页开始
-                        }
-                        , where: { valu: demoReload,domain:selects}//这里传参  向后台
-                        , url: '/dept/findAllDeptPageBy'//后台做模糊搜索接口路径
-                        , method: 'post'
-                    });
-                }
-            };
+        var $ = layui.$, active = {
+            reload: function () {
+                var demoReload = $('#demoReload').val();//获取输入框的值
+                var selects = $('#selects').val();//获取输入框的值
+                //alert(demoReload+selects);
+                //执行重载
+                table.reload('testTable', {
+                    page: {
+                        curr: 1 //重新从第 1 页开始
+                    }
+                    , where: {valu: demoReload, domain: selects}//这里传参  向后台
+                    , url: '/dept/findAllDeptPageBy'//后台做模糊搜索接口路径
+                    , method: 'post'
+                });
+            }
+        };
         //这个是用于创建点击事件的实例
-        $('.layui-form-item .layui-btn').on('click', function () {
-            var type = $(this).data('type');
-            active[type] ? active[type].call(this) : '';
+        $('.layui-form-item .layui-btn').on('click', function () {
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
         });
     });
+
     function a() {
         $(".layui-laypage-btn").click();
     }

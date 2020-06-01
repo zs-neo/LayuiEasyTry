@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans
@@ -12,7 +13,7 @@
 
     <!--开启注解扫描，只扫描Controller注解-->
     <context:component-scan base-package="cn.neu">
-        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
+        <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
 
     <!--配置的视图解析器对象-->
@@ -22,8 +23,8 @@
     </bean>
 
     <!--过滤静态资源-->
-    <mvc:resources location="/WEB-INF/css/" mapping="/css/**" />
-    <mvc:resources location="/WEB-INF/layui/" mapping="/layui/**" />
+    <mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
+    <mvc:resources location="/WEB-INF/layui/" mapping="/layui/**"/>
 
     <!--开启SpringMVC注解的支持-->
     <mvc:annotation-driven>

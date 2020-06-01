@@ -1,34 +1,39 @@
-html{
+html {
     width: 100%;
     height: 100%;
     overflow: hidden;
 }
-body{
+
+body {
     width: 100%;
     height: 100%;
-    font-family: 'Open Sans',sans-serif;
+    font-family: 'Open Sans', sans-serif;
     margin: 0;
     background-color: white;
 }
-#login{
+
+#login {
     position: absolute;
     top: 50%;
-    left:50%;
+    left: 50%;
     margin: -150px 0 0 -150px;
     width: 300px;
     height: 300px;
 }
-#login h1{
+
+#login h1 {
     color: deepskyblue;
-    text-shadow:0 0 1px;
+    text-shadow: 0 0 1px;
     letter-spacing: 1px;
     text-align: center;
 }
-h1{
+
+h1 {
     font-size: 2em;
     margin: 0.67em 0;
 }
-input{
+
+input {
     width: 278px;
     height: 18px;
     margin-bottom: 10px;
@@ -42,7 +47,8 @@ input{
     border-radius: 4px;
     background-color: whitesmoke;
 }
-.but{
+
+.but {
     width: 300px;
     min-height: 20px;
     display: block;
@@ -55,6 +61,7 @@ input{
     border-radius: 5px;
     margin: 0;
 }
-.but:hover{
+
+.but:hover {
     background: #5cd0d9;
 }
